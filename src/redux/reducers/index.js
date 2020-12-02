@@ -1,8 +1,9 @@
-import {ADD_ONE, MINUS_ONE, BG_SET} from '../actions/';
+import {ADD_ONE, MINUS_ONE, BG_SET, GET_TEXT} from '../actions/';
 
 const initialState = {
     number: 0,
-    backgroundColor: 'red'
+    backgroundColor: 'red',
+    text: ''
 }
 
 function counter(state = initialState, action){
@@ -31,4 +32,13 @@ function backgroundColor(state = initialState, action){
 
 }
 
-export { counter, backgroundColor};
+function text(state = initialState, action){
+
+    if(action.type === GET_TEXT){
+        return {text: action.payload}
+    }
+
+    return state;
+}
+
+export { counter, backgroundColor, text};

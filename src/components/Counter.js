@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 export default function Counter() {
 
     const counter = useSelector(state => state.counter);
+    const input = useSelector(state => state.text);
     const dispatch = useDispatch();
 
     return (
@@ -13,6 +14,11 @@ export default function Counter() {
             <button onClick={ ()=> dispatch({type: 'MINUS_ONE'}) }>-</button>
             <button onClick={ ()=> dispatch({type: 'ADD_ONE'}) }>+</button>
             <button onClick={ ()=> dispatch({type: 'BG_SET'}) }>color</button>
+
+            <h1>{input.text}</h1>
+            <input onChange={ (e)=> dispatch({type: 'GET_TEXT', payload: e.target.value}) } />
+
+            
         </div>
     )
 }
